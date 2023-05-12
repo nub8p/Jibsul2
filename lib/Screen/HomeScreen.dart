@@ -1,4 +1,19 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
+
+/*
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child : Container(
+          child: Text("Welcome to HomeScreen"),
+        ),
+      ),
+    );
+  }
+}
+*/
 
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -218,77 +233,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    width: 390,
-                    height: 96,
-                    child: Stack(
-                      children:[Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Container(
-                            width: 390,
-                            height: 73,
-                            color: Color(0xffd9d9d9),
-                            padding: const EdgeInsets.only(left: 20, right: 17, top: 6, bottom: 24, ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children:[
-                                Text(
-                                  "홈",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(width: 124.50),
-                                Text(
-                                  "Do it!",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                SizedBox(width: 124.50),
-                                Text(
-                                  "MY",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                        Positioned.fill(
-                          child: Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              width: 82,
-                              height: 82,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xffefefef),
-                              ),
-                            ),
-                          ),
-                        ),],
-                    ),
-                  ),
-                ),
-              ),
               Positioned(
                 left: 92,
                 top: 173,
@@ -371,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 100.0,
                             height: 55.0,
                             toggleSize: 45.0,
-                            value: status,
+                            value: false,
                             borderRadius: 30.0,
                             padding: 2.0,
                             activeToggleColor: Color(0xFF6E40C9),
@@ -406,10 +350,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) => DarkHomeScreen())
                                   );
-                                } else {
-                                  _textColor = Colors.black;
-                                  _appBarColor = Color.fromRGBO(36, 41, 46, 1);
-                                  _scaffoldBgcolor = Colors.white;
                                 }
                               });
                             },

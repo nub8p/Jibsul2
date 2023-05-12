@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:sogra/Screen/MyScreen.dart';
+import 'package:sogra/Screen/SelectScreen.dart';
 import 'HomeScreen.dart';
 
 
@@ -22,6 +24,19 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
       context,
       MaterialPageRoute(builder: (context) => HomeScreen()), // NextScreen은 다음 화면을 나타내는 위젯입니다.
     );
+  }
+
+  int _selectedIndex = 0;
+  static List<Widget> _widgetOptions = <Widget>[
+    HomeScreen(),
+    SelectScreen(),
+    MyScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -212,84 +227,11 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                             height: 18,
                             child: Stack(
                               children:[
-
                               ],
                             ),
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                ),
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      width: 390,
-                      height: 96,
-                      child: Stack(
-                        children:[Positioned.fill(
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Container(
-                              width: 390,
-                              height: 73,
-                              color: Color(0xffefefef),
-                              padding: const EdgeInsets.only(left: 20, right: 17, top: 6, bottom: 24, ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children:[
-                                  Text(
-                                    "홈",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontFamily: "Inter",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  SizedBox(width: 124.50),
-                                  Text(
-                                    "Do it!",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontFamily: "Inter",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  SizedBox(width: 124.50),
-                                  Text(
-                                    "MY",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontFamily: "Inter",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                          Positioned.fill(
-                            child: Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                width: 82,
-                                height: 82,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xffefefef),
-                                ),
-                              ),
-                            ),
-                          ),],
-                      ),
                     ),
                   ),
                 ),
@@ -349,33 +291,12 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                                 ),
                               ),
                             ),
-                            // Positioned.fill(
-                            //   child: Align(
-                            //     alignment: Alignment.topRight,
-                            //     child: Transform.translate(
-                            //       offset: Offset(-3, 5), // 원하는 만큼 위로 이동시키는 오프셋 값을 지정합니다.
-                            //       child: Transform.rotate(
-                            //         angle: 3.14,
-                            //         child: GestureDetector(
-                            //           onTap: navigateToNextScreen, // 클릭 이벤트가 발생하면 navigateToNextScreen 메서드가 호출됩니다.
-                            //           child: Container(
-                            //             width: 31,
-                            //             height: 32,
-                            //             decoration: BoxDecoration(
-                            //               borderRadius: BorderRadius.circular(20),
-                            //               color: Color(0xffeccb51),
-                            //             ),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+
                             FlutterSwitch(
                               width: 100.0,
                               height: 55.0,
                               toggleSize: 45.0,
-                              value: status,
+                              value: true,
                               borderRadius: 30.0,
                               padding: 2.0,
                               activeToggleColor: Color(0xFF6E40C9),
@@ -407,7 +328,7 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                                     _appBarColor = Color.fromRGBO(36, 41, 46, 1);
                                     _scaffoldBgcolor = Colors.white;
                                     // sleep(Duration(seconds: 2));
-                                    Navigator.push(context,
+                                    Navigator.pop(context,
                                     MaterialPageRoute(builder: (context) => HomeScreen()));
                                   }
                                 });
@@ -431,6 +352,25 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
               ],
             ),
           )
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Do it!',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'My',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }

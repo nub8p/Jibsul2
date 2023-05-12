@@ -6,16 +6,41 @@ class RecipeScreen extends StatelessWidget {
   RecipeScreen({required this.selectedItems});
 
   Widget _buildSelectedItems() {
-    return Wrap(
-      children: selectedItems.map((item) {
-        return Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Chip(
-            label: Text(item),
-            backgroundColor: Colors.grey[300],
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Selected Ingredients:',
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
           ),
-        );
-      }).toList(),
+          SizedBox(height: 8.0),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: selectedItems.map((item) {
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                child: Text(
+                  item,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.black54,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 
@@ -30,16 +55,17 @@ class RecipeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'Selected Ingredients:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
             _buildSelectedItems(),
             SizedBox(height: 16.0),
             Text(
               'Recommended Recipes:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
+            SizedBox(height: 16.0),
             Expanded(
               child: ListView.builder(
                 itemCount: 5, // 여기에 실제 레시피 리스트의 개수를 입력하세요.
