@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sogra/Screen/FlatterScreen.dart';
 import 'package:sogra/Screen/HomeScreen.dart';
 import 'package:sogra/Screen/MyScreen.dart';
 import 'package:sogra/Screen/SelectScreen.dart';
@@ -44,9 +45,6 @@ class _myApp
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('집술이'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
