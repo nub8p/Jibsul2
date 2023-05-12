@@ -17,9 +17,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final primaryColor = Color(0xff6842C2);
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: primaryColor,
+        appBarTheme: AppBarTheme(
+          backgroundColor: primaryColor,
+        ),
+      ),
       home: myApp(),
     );
   }

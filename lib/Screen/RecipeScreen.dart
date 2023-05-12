@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
-class RecipeScreen extends StatelessWidget {
+class RecipeScreen extends StatefulWidget {
   final List<String> selectedItems;
 
   RecipeScreen({required this.selectedItems});
+
+  @override
+  _RecipeScreenState createState() => _RecipeScreenState();
+}
+
+class _RecipeScreenState extends State<RecipeScreen> {
+  int _selectedCardIndex = -1;
+
 
   Widget _buildSelectedItems(BuildContext context) {
     return Container(
@@ -20,7 +28,7 @@ class RecipeScreen extends StatelessWidget {
                 child: Wrap(
                   spacing: 12.0,
                   runSpacing: 12.0,
-                  children: selectedItems.map((item) {
+                  children: widget.selectedItems.map((item) {
                     return AspectRatio(
                       aspectRatio: 1.0,
                       child: Container(
@@ -47,7 +55,8 @@ class RecipeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRecipeCard(String title, String description) {
+
+  Widget _buildRecipeCard(String title, [String? description]) {
     return Container(
       width: 200.0,
       height: 200,
@@ -65,19 +74,22 @@ class RecipeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 8.0),
-              Text(
+              description != null
+                  ? Text(
                 description,
                 style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.grey[600],
                 ),
-              ),
+              )
+                  : SizedBox.shrink(),
             ],
           ),
         ),
       ),
     );
   }
+
 
   Widget _buildRecipeList(String title) {
     return Column(
@@ -96,11 +108,26 @@ class RecipeScreen extends StatelessWidget {
           child: Row(
             children: <Widget>[
               SizedBox(width: 14.0),
-              _buildRecipeCard('Recipe 1', 'Description of Recipe 1'),
+              GestureDetector(
+                onTap: () {
+                  _showRecipeDetails(context, 'Recipe 1', 'Description of Recipe 1');
+                },
+                child: _buildRecipeCard('Recipe 1', 'Description of Recipe 1'),
+              ),
               SizedBox(width: 14.0),
-              _buildRecipeCard('Recipe 2', 'Description of Recipe 2'),
+              GestureDetector(
+                onTap: () {
+                  _showRecipeDetails(context, 'Recipe 2', 'Description of Recipe 2');
+                },
+                child: _buildRecipeCard('Recipe 2', 'Description of Recipe 2'),
+              ),
               SizedBox(width: 14.0),
-              _buildRecipeCard('Recipe 3', 'Description of Recipe 3'),
+              GestureDetector(
+                onTap: () {
+                  _showRecipeDetails(context, 'Recipe 3', 'Description of Recipe 3');
+                },
+                child: _buildRecipeCard('Recipe 3', 'Description of Recipe 3'),
+              ),
               SizedBox(width: 14.0),
             ],
           ),
@@ -149,4 +176,33 @@ class RecipeScreen extends StatelessWidget {
     );
   }
 
+}
+
+
+void _showRecipeDetails(BuildContext context, String title, String description) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(title),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text(description),
+              SizedBox(height: 20.0),
+              Image.network('https://source.unsplash.com/1600x900/?food'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Close'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
