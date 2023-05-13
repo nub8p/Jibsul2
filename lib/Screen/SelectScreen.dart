@@ -7,7 +7,20 @@ class SelectScreen extends StatefulWidget {
 }
 
 class _SelectScreenState extends State<SelectScreen> {
-  List<String> items = [    "콜라",    "우유",    "얼음",    "레몬",    "맥주",    "라임",    "소금",    "토닉워터",    "올리브",    "설탕",    "과일통조림",    "위스키"  ];
+  List<String> items = [
+    "콜라",
+    "우유",
+    "얼음",
+    "레몬",
+    "맥주",
+    "라임",
+    "소금",
+    "토닉워터",
+    "올리브",
+    "설탕",
+    "과일통조림",
+    "에스프레소"
+  ];
   List<String> selectedItems = [];
   String selectedItem = "";
 
@@ -151,6 +164,7 @@ class _SelectScreenState extends State<SelectScreen> {
             )));
   }
 }
+
 // nav to [movementScreen] + title
 class Go2RecipeBtn extends StatelessWidget {
   List<String> selectedItems;
@@ -160,39 +174,35 @@ class Go2RecipeBtn extends StatelessWidget {
     return SizedBox(
         width: double.infinity,
         height: double.infinity,
-        child : Center(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-            ),
-            child: Text("레시피 보러가기",
+        child: Center(
+            child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(60),
+          ),
+          child: Text("레시피 보러가기",
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black
-              )
-            ),
-          )
-        )
-    );
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black)),
+        )));
   }
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(190, 100),
-        backgroundColor: Colors.black12,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(60),
-        )
-      ),
+          minimumSize: const Size(190, 100),
+          backgroundColor: Colors.black12,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(60),
+          )),
       child: myButton(),
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => RecipeScreen(selectedItems: selectedItems)),
+          MaterialPageRoute(
+              builder: (context) => RecipeScreen(selectedItems: selectedItems)),
         );
       },
     );
