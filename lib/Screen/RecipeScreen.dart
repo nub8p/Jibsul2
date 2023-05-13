@@ -60,12 +60,15 @@ class _RecipeScreenState extends State<RecipeScreen> {
     return Container(
       width: 200.0,
       height: 200,
+
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Image.asset(
+                  'images/image35.png'),
               Text(
                 title,
                 style: TextStyle(
@@ -111,6 +114,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 onTap: () {
                   _showRecipeDetails(
                       context, 'Recipe 1', 'Description of Recipe 1');
+
                 },
                 child: _buildRecipeCard('Recipe 1', 'Description of Recipe 1'),
               ),
