@@ -66,6 +66,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Image.asset('images/coffee1.png'),
               Text(
                 title,
                 style: TextStyle(

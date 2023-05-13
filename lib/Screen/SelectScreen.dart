@@ -142,6 +142,10 @@ class _SelectScreenState extends State<SelectScreen> {
         height: 60,
         child: Container(
           margin: EdgeInsets.only(top: 10),
+          decoration: BoxDecoration(
+            color: Color(0xff646CD0),
+            borderRadius: BorderRadius.circular(60),
+          ),
           child: Go2RecipeBtn(selectedItems: selectedItems),
         ));
   }
@@ -183,7 +187,7 @@ class Go2RecipeBtn extends StatelessWidget {
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black)),
+                  color: Colors.white)),
         )));
   }
 

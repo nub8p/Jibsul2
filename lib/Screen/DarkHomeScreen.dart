@@ -104,7 +104,48 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xffd9d9d9),
                     ),
+
                   ),
+                ),
+                Positioned(
+                    left: 53,
+                    top: 242,
+                    child: Container(
+                      width: 185,
+                      height: 161,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Color(0xffE19B62), Color(0xffBE53B6)],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(18.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "애플 모히또",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              "허밍웨이가 좋아하던...",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                 ),
                 Positioned(
                   left: 13,
@@ -114,21 +155,27 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                     height: 127,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffd9d9d9),
+                      image: DecorationImage(
+                        image: NetworkImage('https://source.unsplash.com/1600x900/?cocktail'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
+                  )
                 ),
                 Positioned(
-                  left: 15,
-                  top: 610,
-                  child: Container(
-                    width: 360,
-                    height: 127,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffd9d9d9),
-                    ),
-                  ),
+                    left: 15,
+                    top: 610,
+                    child: Container(
+                      width: 360,
+                      height: 127,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: NetworkImage('https://source.unsplash.com/1600x900/?alcohol'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )
                 ),
                 Positioned(
                   left: 255,
@@ -138,8 +185,32 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                     height: 131,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffd9d9d9),
+                      color: Color(0xffA253BE),
                     ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "코스모폴리탄",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        "예쁘지만 도수가 세요.",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                   ),
                 ),
                 Positioned(
@@ -150,7 +221,7 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                     height: 131,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffd9d9d9),
+                      color: Color(0xffA253BE),
                     ),
                   ),
                 ),
@@ -236,12 +307,14 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                   ),
                 ),
                 Positioned(
-                  left: 92,
-                  top: 173,
+                  left: 52,
+                  top: 170,
                   child: Container(
-                    width: 171,
-                    height: 227,
-                    child: FlutterLogo(size: 171),
+                    width: 190,
+                    // height: 227,
+                    child: Image.asset(
+                      'images/drink1.png',
+                    ),
                   ),
                 ),
                 Positioned.fill(
@@ -341,14 +414,18 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
                   ),
                 ),
                 Positioned(
-                  left: 301,
-                  top: 212,
+                  left: 260,
+                  top: 220,
                   child: Container(
-                    width: 143,
-                    height: 175,
-                    child: FlutterLogo(size: 143),
+                    width: 120,
+                    child: Image.asset(
+                        'images/drink2.png',
+                        width: 80
+                    ),
+                    //FlutterLogo(size: 143),
                   ),
                 ),
+
               ],
             ),
           )
@@ -360,16 +437,16 @@ class _DarkHomeScreenState extends State<DarkHomeScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.rocket),
             label: 'Do it!',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.person),
             label: 'My',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Color(0xffA253BE),
         onTap: _onItemTapped,
       ),
     );

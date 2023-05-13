@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     "오늘 기분을 커피로 마셔요.",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontFamily: "Inter",
                       fontWeight: FontWeight.w700,
                     ),
@@ -98,10 +98,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 185,
                   height: 161,
                   decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0xff5FA1E2), Color(0xff6653C8)],
+                    ),
                     borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffd9d9d9),
                   ),
+                  child: Padding(
+                    padding: EdgeInsets.all(15.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "바닐라 프라푸치노",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      "구름 위 솜사탕 맛일까",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+                )
               ),
               Positioned(
                 left: 13,
@@ -111,9 +139,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 127,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffd9d9d9),
+                    image: DecorationImage(
+                      image: NetworkImage('https://source.unsplash.com/1600x900/?coffee&' + DateTime.now().millisecondsSinceEpoch.toString()),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
+                )
               ),
               Positioned(
                 left: 15,
@@ -123,9 +154,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 127,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffd9d9d9),
+                    image: DecorationImage(
+                      image: NetworkImage('https://source.unsplash.com/1600x900/?coffee'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
+                )
               ),
               Positioned(
                 left: 255,
@@ -135,9 +169,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 131,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffd9d9d9),
+                    color: Color(0xff646CD0), // 맨 왼쪽
                   ),
-                ),
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "카페라테",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          "심플 이즈 베스트",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ),
               Positioned(
                 left: -146,
@@ -147,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 131,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffd9d9d9),
+                    color: Color(0xff646CD0),
                   ),
                 ),
               ),
@@ -197,7 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 45,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: Color(0xffefefef),
+                          color: Color(0xffefefef), //검색바
                         ),
                       ),
                       Positioned(
@@ -224,7 +282,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 18,
                           child: Stack(
                             children:[
-
                             ],
                           ),
                         ),
@@ -234,12 +291,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Positioned(
-                left: 92,
-                top: 173,
+                left: 42,
+                top: 160,
                 child: Container(
-                  width: 171,
-                  height: 227,
-                  child: FlutterLogo(size: 171),
+                  width: 230,
+                  // height: 227,
+                  child: Image.asset(
+                      'images/coffee2.png',
+                  ),
                 ),
               ),
               Positioned.fill(
@@ -366,7 +425,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   width: 143,
                   height: 175,
-                  child: FlutterLogo(size: 143),
+                  child: Image.asset(
+                    'images/coffee1.png',
+                      width: 80
+                  ),
+                    //FlutterLogo(size: 143),
                 ),
               ),
             ],
