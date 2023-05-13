@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RecipeScreen extends StatefulWidget {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final List<String> selectedItems;
 
   RecipeScreen({required this.selectedItems});
@@ -11,7 +13,6 @@ class RecipeScreen extends StatefulWidget {
 
 class _RecipeScreenState extends State<RecipeScreen> {
   int _selectedCardIndex = -1;
-
 
   Widget _buildSelectedItems(BuildContext context) {
     return Container(
@@ -55,7 +56,6 @@ class _RecipeScreenState extends State<RecipeScreen> {
     );
   }
 
-
   Widget _buildRecipeCard(String title, [String? description]) {
     return Container(
       width: 200.0,
@@ -76,12 +76,12 @@ class _RecipeScreenState extends State<RecipeScreen> {
               SizedBox(height: 8.0),
               description != null
                   ? Text(
-                description,
-                style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.grey[600],
-                ),
-              )
+                      description,
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.grey[600],
+                      ),
+                    )
                   : SizedBox.shrink(),
             ],
           ),
@@ -89,7 +89,6 @@ class _RecipeScreenState extends State<RecipeScreen> {
       ),
     );
   }
-
 
   Widget _buildRecipeList(String title) {
     return Column(
@@ -110,21 +109,24 @@ class _RecipeScreenState extends State<RecipeScreen> {
               SizedBox(width: 14.0),
               GestureDetector(
                 onTap: () {
-                  _showRecipeDetails(context, 'Recipe 1', 'Description of Recipe 1');
+                  _showRecipeDetails(
+                      context, 'Recipe 1', 'Description of Recipe 1');
                 },
                 child: _buildRecipeCard('Recipe 1', 'Description of Recipe 1'),
               ),
               SizedBox(width: 14.0),
               GestureDetector(
                 onTap: () {
-                  _showRecipeDetails(context, 'Recipe 2', 'Description of Recipe 2');
+                  _showRecipeDetails(
+                      context, 'Recipe 2', 'Description of Recipe 2');
                 },
                 child: _buildRecipeCard('Recipe 2', 'Description of Recipe 2'),
               ),
               SizedBox(width: 14.0),
               GestureDetector(
                 onTap: () {
-                  _showRecipeDetails(context, 'Recipe 3', 'Description of Recipe 3');
+                  _showRecipeDetails(
+                      context, 'Recipe 3', 'Description of Recipe 3');
                 },
                 child: _buildRecipeCard('Recipe 3', 'Description of Recipe 3'),
               ),
@@ -155,10 +157,12 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("집술이수리 마수리",
+                    Text(
+                      "집술이수리 마수리",
                       style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                     SizedBox(height: 20.0),
                     _buildRecipeList('만들 수 있어요.'),
@@ -175,11 +179,10 @@ class _RecipeScreenState extends State<RecipeScreen> {
       ),
     );
   }
-
 }
 
-
-void _showRecipeDetails(BuildContext context, String title, String description) {
+void _showRecipeDetails(
+    BuildContext context, String title, String description) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
